@@ -12,6 +12,7 @@ pipeline {
         stage('Check code style') {
           steps {
             echo 'Check code style'
+            timestamps()
           }
         }
         stage('Run Behat tests') {
