@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Run Build'
+        sh 'echo Build'
       }
     }
     stage('Check code style') {
@@ -33,6 +34,7 @@ pipeline {
     stage('Reports') {
       steps {
         echo 'Create reports'
+        sh 'echo Reports for build'
       }
     }
     stage('Send notification') {
