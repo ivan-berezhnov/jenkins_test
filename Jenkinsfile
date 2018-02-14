@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Run Build'
-        sh 'echo Build && pwd && ls -la && cd ../ && ls -la'
+        sh 'echo Build && pwd && ls -la && cd ../ && ls -la'
       }
     }
     stage('Check code style') {
