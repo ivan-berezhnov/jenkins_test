@@ -12,8 +12,7 @@ pipeline {
         stage('Check code style') {
           steps {
             echo 'Check code style'
-            sh '''pwd
-ls -la'''
+            sh 'pwd && ls -la && cd ../ && ls -la'
           }
         }
         stage('Run Behat tests') {
