@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Run Build'
-        sh 'echo Build'
+        sh 'echo Build && pwd && ls -la && cd ../ && ls -la'
       }
     }
     stage('Check code style') {
@@ -12,7 +12,6 @@ pipeline {
         stage('Check code style') {
           steps {
             echo 'Check code style'
-            sh 'pwd && ls -la && cd ../ && ls -la'
           }
         }
         stage('Run Behat tests') {
