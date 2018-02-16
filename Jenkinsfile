@@ -15,7 +15,7 @@ pipeline {
             echo 'Check code style'
             sh 'path=$(pwd) && docker run --rm -v $path:/work ivoberz/sanoma:sniffer && pwd && echo \'Finish\''
             sh 'docker run hello-world'
-            sh 'docker run -v $(pwd):/work ivoberz/sanoma:sniffer phpcs --standard=Drupal,DrupalSecure --report-file=./drupal.txt . && cat drupal.txt'
+            sh 'docker run -v $(pwd):/work ivoberz/sanoma:sniffer phpcs --standard=Drupal,DrupalSecure --report-file=./drupal.txt . && la -ls && cat drupal.txt'
           }
         }
         stage('Run Behat tests') {
