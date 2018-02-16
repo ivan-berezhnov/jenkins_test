@@ -13,7 +13,7 @@ pipeline {
         stage('Check code style') {
           steps {
             echo 'Check code style'
-            sh 'docker run -v $(pwd):/work ivoberz/sanoma:sniffer phpcs --report=summary . && ls -la'
+            sh 'docker run -v $(pwd):/work ivoberz/sanoma:sniffer phpcs --report=xml --report-file=file.xml . && ls -la'
           }
         }
         stage('Run Behat tests') {
