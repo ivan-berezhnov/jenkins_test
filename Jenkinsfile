@@ -13,6 +13,7 @@ pipeline {
         stage('Check code style') {
           steps {
             echo 'Check code style'
+            sh 'docker run --rm -v $(pwd):/work ivoberz/sanoma:sniffer'
           }
         }
         stage('Run Behat tests') {
