@@ -13,7 +13,7 @@ pipeline {
         stage('Check code style') {
           steps {
             echo 'Check code style'
-            sh 'path=$(pwd) && docker run --rm -v $path:/work ivoberz/sanoma:sniffer . && pwd && echo \'Finish\''
+            sh 'path=$(pwd) && docker run --rm -v $path:/work ivoberz/sanoma:sniffer && pwd && echo \'Finish\''
             sh 'docker run hello-world'
             sh 'docker run -v $(pwd):/work ivoberz/sanoma:sniffer'
           }
