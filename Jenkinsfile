@@ -19,7 +19,7 @@ pipeline {
         stage('Run Behat tests') {
           steps {
             echo 'Run Behat tests'
-            sh 'build_number: ENV[\'BUILD_ID\']'
+            sh 'echo env.BUILD_ID'
           }
         }
         stage('Run sass linter') {
