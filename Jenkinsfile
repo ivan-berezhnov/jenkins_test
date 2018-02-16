@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Run Build'
-        sh 'echo Build && pwd && ls -la && cd ../ && ls -la && docker version'
+        sh 'echo Build && pwd && ls -la && cd ../ && ls -la && docker run hello-world'
       }
     }
     stage('Check code style') {
