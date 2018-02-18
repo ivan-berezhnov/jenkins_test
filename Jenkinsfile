@@ -8,12 +8,13 @@ pipeline {
         sh 'echo Build && pwd && ls -la && cd ../ && ls -la && docker run hello-world'
       }
     }
-    stage('Check code style') {
+    stage('Test') {
       parallel {
         stage('Check code style') {
           steps {
             echo 'Check code style'
-            sh 'docker run --rm -v $(pwd):/work ivoberz/sanoma:sniffer phpcs --standard=Drupal --report-file=drupal.txt --report-summary . && ls -la && cat drupal.txt'
+            sh 'docker run --rm -v $(pwd):/work ivoberz/sanoma:sniffer phpcs --standard=Drupal --report=junit .'
+            sh 'ls -la && cat drupal.txt'
           }
         }
         stage('Run Behat tests') {
@@ -39,6 +40,12 @@ pipeline {
         echo 'Create reports'
         sh 'echo Reports for build'
       }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: './*.jar', fingerprint: true
+            junit './*.xml'
+        }
     }
     stage('Send notification') {
       steps {
